@@ -62,7 +62,15 @@ export default function Component() {
     setDoneCount(doneCount - 1)
     Cookies.set('doneList', JSON.stringify(updatedDoneList))
   }
-
+  const handleDoneUnDone = (idx: number) => {
+    const updatedTodoList = [...todoList, doneList[idx]]
+    setTodoList(updatedTodoList)
+    const updatedDoneList = doneList.filter((_, index) => index !== idx)
+    setDoneList(updatedDoneList)
+    Cookies.set('todoList', JSON.stringify(updatedTodoList))
+    Cookies.set('doneList', JSON.stringify(updatedDoneList))
+    setDoneCount(doneCount - 1)
+  }
   return (
     <div className="min-h-screen bg-gradient-to-r from-pink-100 to-purple-100 flex items-center justify-center p-4">
       <div className="w-full max-w-md bg-white p-6 rounded-lg shadow-xl">
@@ -125,9 +133,13 @@ export default function Component() {
                     className="flex items-center justify-between bg-gray-200 p-3 rounded-md shadow mb-2"
                   >
                     <span className="line-through text-gray-500">{todo}</span>
+                    <button onClick={() => handleDoneUnDone(index)} className="p-1">
+                      <Circle className="w-4 h-4" />
+                    </button>
                     <button onClick={() => handleDoneDelete(index)} className="p-1">
                       <Trash2 className="w-4 h-4 text-red-500" />
                     </button>
+
                   </div>
                 ))}
               </div>
