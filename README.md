@@ -40,5 +40,7 @@ To get started with the project, follow these steps:
 Contributions are welcome! Please open an issue or submit a pull request.
 
 
+
 ## TODO
-[ ] add complete functionality
+- [ ] Add a checkbox to the todo item component.
+- [ ] Implement a function to handle the checkbox state change.
